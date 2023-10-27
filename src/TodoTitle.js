@@ -1,6 +1,6 @@
-function TodoTitle(){
+function TodoTitle({completed,total}){
   return (
-    <h1>You have 1 item of 3</h1>
+    <h1>You have done {completed} out of {total} TODO's</h1>
   );
 }
 

@@ -1,8 +1,8 @@
-function TodoItem (){
+function TodoItem ({name}){
   return (
     <li>
       <span>V</span>
-      <p>This is an item</p>
+      <p>{name}</p>
       <span>X</span>
     </li>
   );
