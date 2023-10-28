@@ -1,4 +1,4 @@
-import { TodoTitle } from './TodoTitle';
+import { TodoCounter } from './TodoCounter';
 import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
@@ -20,7 +20,7 @@ function App() {
 
   return (
       <React.Fragment>
-        <TodoTitle completed={2} total={5}/>
+        <TodoCounter completed={2} total={5}/>
 
         <TodoSearch/>
         <TodoList>
