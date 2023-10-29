@@ -1,0 +1,22 @@
+.TodoCreateButton{
+  position: fixed;
+  right: 54px;
+  bottom: 12px;
+  background-image: url('../public/assets/icons/ButtonOpenModal.png');
+  width: 64px;
+  height: 64px;   
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+
+}     
+
+.TodoCreateButton:hover{
+  cursor: pointer;
+  transform: rotate(226deg);
+
+}

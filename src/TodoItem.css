@@ -1,0 +1,62 @@
+.TodoItem {
+  position: relative;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  background: #FAFAFA;
+  box-shadow: 0px 5px 50px 0px #20232926;
+  margin: 0 7vw 4vh;
+  padding: 20px 20px 20px 0px;
+  min-height: 100px;
+
+}
+
+.TodoItem-name {
+  font-size: 1.8rem;
+  overflow-wrap: break-word;
+  place-self: center;
+ 
+  }
+
+
+.TodoItem-name--completed{
+  text-decoration: line-through;
+}
+
+.Icon{
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+
+.Icon-check{
+  place-self: center;
+  background-image: url('../public/assets/icons/Check.png');
+}
+
+.Icon-check--active{
+  background-image: url('../public/assets/icons/Checked.png');
+}
+
+.Icon-check:hover{
+  cursor: pointer;
+}
+
+
+
+
+.Icon-delete{
+  position: absolute;
+  right: 0;
+  top: -12px;
+  background-image: url('../public/assets/icons/X.png');
+
+}
+
+.Icon-delete:hover{
+  cursor: pointer;
+  background-image: url('../public/assets/icons/Deleted.png');
+}

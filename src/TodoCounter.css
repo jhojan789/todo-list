@@ -1,0 +1,10 @@
+.TodoCounter {
+  font-weight: 400;
+  font-size: 2.4rem;
+  line-height: 2.9rem;
+  text-align: center;
+  padding: 14vh 12vw 7vh;
+  color: #1E1E1F;
+  overflow-wrap: break-word;
+
+}
