@@ -12,7 +12,7 @@ const defaultTodos = [
   {name:'Tomar el Curso de Introducción a React.js adfdsasf aasdfa asdfaf adsf df dfasdf  ',completed:false, id: 1},
   {name:'Tomar el Curso de Introducción a React.js',completed:true, id: 2},
   {name:'Llorar con la Llorona y reir con el payaso',completed:true, id: 3},
-  {name:'Llorar con la Llorona y reir con el payaso',completed:false, id: 4},
+  {name:'LALALALAL',completed:false, id: 4},
   {name:'Llorar con la Llorona y reir con el payaso',completed:true, id: 5},
 ];
 
@@ -24,8 +24,19 @@ function App() {
 
   console.log('This is the value ' + searchValue);
 
+  //derived states
   const completedTodos = todos.filter(todo=>!!todo.completed).length;
   const totalTodos = todos.length;
+
+  const searchedTodos = todos.filter(todo=>{
+    
+
+    return todo.name.toLowerCase().includes(searchValue.toLowerCase());
+
+  });
+
+
+
 
   
 
@@ -38,7 +49,7 @@ function App() {
         />
         <TodoList>
           {
-            defaultTodos.map(todo=>
+            searchedTodos.map(todo=>
               <TodoItem 
                 key={todo.id} 
                 name={todo.name}
