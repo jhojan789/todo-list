@@ -10,10 +10,10 @@ import { useState } from 'react';
 
 const defaultTodos = [
   {name:'Tomar el Curso de Introducción a React.js adfdsasf aasdfa asdfaf adsf df dfasdf  ',completed:false, id: 1},
-  {name:'Tomar el Curso de Introducción a React.js',completed:true, id: 2},
-  {name:'Llorar con la Llorona y reir con el payaso',completed:true, id: 3},
+  {name:'Tomar el Curso de Introducción a React.js',completed:false, id: 2},
+  {name:'Llorar con la Llorona y reir con el payaso',completed:false, id: 3},
   {name:'LALALALAL',completed:false, id: 4},
-  {name:'Llorar con la Llorona y reir con el payaso',completed:true, id: 5},
+  {name:'Llorar con la Llorona y reir con el payaso',completed:false, id: 5},
 ];
 
 
@@ -22,7 +22,7 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [todos, setTodos] = useState(defaultTodos);
 
-  console.log('This is the value ' + searchValue);
+  // console.log('This is the value ' + searchValue);
 
   //derived states
   const completedTodos = todos.filter(todo=>!!todo.completed).length;
@@ -34,11 +34,6 @@ function App() {
     return todo.name.toLowerCase().includes(searchValue.toLowerCase());
 
   });
-
-
-
-
-  
 
   return (
       <>
@@ -52,8 +47,13 @@ function App() {
             searchedTodos.map(todo=>
               <TodoItem 
                 key={todo.id} 
+                id= {todo.id}
                 name={todo.name}
-                completed={todo.completed}/>
+                completed={todo.completed}
+                setTodos={setTodos} 
+                todos = {todos}
+              />
+                
             
               )
           }
