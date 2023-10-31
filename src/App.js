@@ -9,20 +9,30 @@ import Fireworks from './Fireworks.js';
 
 
 
-const defaultTodos = [
-  {name:'Tomar el Curso de Introducción a React.js adfdsasf aasdfa asdfaf adsf df dfasdf  ',completed:false, id: 1},
-  {name:'Tomar el Curso de Introducción a React.js',completed:true, id: 2},
-  {name:'Llorar con la Llorona y reir con el payaso',completed:false, id: 3},
-  {name:'LALALALAL',completed:false, id: 4},
-  {name:'Llorar con la Llorona y reir con el payaso',completed:false, id: 5},
-];
+// const defaultTodos = [
+//   {name:'Tomar el Curso de Introducción a Node.js  ',completed:false, id: 1},
+//   {name:'Tomar el Curso de Introducción a React.js',completed:true, id: 2},
+//   {name:'Llorar con la Llorona y reir con el payaso',completed:false, id: 3},
+//   {name:'LALALALAL',completed:false, id: 4},
+//   {name:'Llorar con la Llorona y reir con el payaso',completed:false, id: 5},
+// ];
+// localStorage.setItem('TODOS_V1',JSON.stringify(defaultTodos))
 
 
 let idTimeout;
 
 function App() {
+  let appStorage = localStorage.getItem('TODOS_V1');; 
+  let parsedTodos;
+
+  if(!appStorage){
+    localStorage.setItem('TODOS_V1','[]');
+  }else{
+    parsedTodos = JSON.parse(appStorage);
+  }
+
   const [searchValue, setSearchValue] = useState('');
-  const [todos, setTodos] = useState(defaultTodos);
+  const [todos, setTodos] = useState(parsedTodos);
   const [activeFire, setActiveFire] = useState(false);
   //derived states
   const completedTodos = todos.filter(todo=>!!todo.completed).length;
@@ -39,16 +49,16 @@ function App() {
     const updatedTodos = todos.map(todo => 
       todo.id === id ? {...todo, completed: !completed} : todo
       );
-
-    setTodos(updatedTodos);
+    
     const isAllCompleted = updatedTodos.every(todo=>todo.completed);
     isAllCompleted ? launchFireworks() : setActiveFire(false);
+
+    saveLocalStorage(updatedTodos);
   };
     
   const removeTodo = (id)=>{
     const removedComponents = todos.filter(todo => todo.id !== id && todo);
-
-    setTodos(removedComponents);
+    saveLocalStorage(removedComponents);
   };
   
   //fireworks
@@ -63,6 +73,12 @@ function App() {
   
   const launchFireworks =()=>{
     setActiveFire(true);
+  }
+
+  const saveLocalStorage = (todos)=>{
+    const stringifyTodos = JSON.stringify(todos);
+    localStorage.setItem('TODOS_V1', stringifyTodos);
+    setTodos(todos);
   }
 
   return (
