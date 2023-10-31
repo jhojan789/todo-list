@@ -2,7 +2,7 @@
   position: fixed;
   right: 54px;
   bottom: 12px;
-  background-image: url('../public/assets/icons/ButtonOpenModal.png');
+  background-image: url('./assets/icons/ButtonOpenModal.png');
   width: 64px;
   height: 64px;   
   background-position: center;

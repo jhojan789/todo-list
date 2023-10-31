@@ -34,11 +34,11 @@
 
 .Icon-check{
   place-self: center;
-  background-image: url('../public/assets/icons/Check.png');
+  /* background-image: url('./assets/icons/Check.png'); */
 }
 
 .Icon-check--active{
-  background-image: url('../public/assets/icons/Checked.png');
+  /* background-image: url('./assets/icons/Checked.png'); */
 }
 
 .Icon-check:hover{
@@ -52,11 +52,11 @@
   position: absolute;
   right: 0;
   top: -12px;
-  background-image: url('../public/assets/icons/X.png');
+  /* background-image: url('./assets/icons/X.png'); */
 
 }
 
 .Icon-delete:hover{
   cursor: pointer;
-  background-image: url('../public/assets/icons/Deleted.png');
+  /* background-image: url('./assets/icons/Deleted.png'); */
 }
