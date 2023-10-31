@@ -11,7 +11,7 @@ import Fireworks from './Fireworks.js';
 
 const defaultTodos = [
   {name:'Tomar el Curso de Introducción a React.js adfdsasf aasdfa asdfaf adsf df dfasdf  ',completed:false, id: 1},
-  {name:'Tomar el Curso de Introducción a React.js',completed:false, id: 2},
+  {name:'Tomar el Curso de Introducción a React.js',completed:true, id: 2},
   {name:'Llorar con la Llorona y reir con el payaso',completed:false, id: 3},
   {name:'LALALALAL',completed:false, id: 4},
   {name:'Llorar con la Llorona y reir con el payaso',completed:false, id: 5},
@@ -56,7 +56,7 @@ function App() {
     activeFire ?
       idTimeout = setTimeout(()=>{
         setActiveFire(false);
-      },5000) :
+      },10000) :
       clearTimeout(idTimeout);
     
   },[activeFire]);

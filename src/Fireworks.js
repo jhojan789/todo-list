@@ -13,7 +13,7 @@ const Fireworks = ({activeFire})=>{
         <Confetti
           width={window.innerWidth}
           height={window.innerHeight}
-          numberOfPieces={40}
+          numberOfPieces={100}
         />
       }
     </div>

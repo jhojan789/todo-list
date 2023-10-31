@@ -17,46 +17,7 @@
   
 }
 
-
 .TodoItem-name--completed{
   text-decoration: line-through;
 }
 
-.Icon{
-  display: block;
-  width: 24px;
-  height: 24px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-
-
-.Icon-check{
-  place-self: center;
-  /* background-image: url('./assets/icons/Check.png'); */
-}
-
-.Icon-check--active{
-  /* background-image: url('./assets/icons/Checked.png'); */
-}
-
-.Icon-check:hover{
-  cursor: pointer;
-}
-
-
-
-
-.Icon-delete{
-  position: absolute;
-  right: 0;
-  top: -12px;
-  /* background-image: url('./assets/icons/X.png'); */
-
-}
-
-.Icon-delete:hover{
-  cursor: pointer;
-  /* background-image: url('./assets/icons/Deleted.png'); */
-}
