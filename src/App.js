@@ -3,7 +3,8 @@ import { TodoSearch } from './TodoSearch';
 import { TodoList } from './TodoList';
 import { TodoItem } from './TodoItem';
 import {TodoCreateButton } from './TodoCreateButton';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Fireworks from './Fireworks.js';
 
 
 
@@ -17,42 +18,56 @@ const defaultTodos = [
 ];
 
 
+let idTimeout;
 
 function App() {
   const [searchValue, setSearchValue] = useState('');
   const [todos, setTodos] = useState(defaultTodos);
-
-
-
+  const [activeFire, setActiveFire] = useState(false);
   //derived states
   const completedTodos = todos.filter(todo=>!!todo.completed).length;
   const totalTodos = todos.length;
 
   const searchedTodos = todos.filter(todo=>{
     
-
     return todo.name.toLowerCase().includes(searchValue.toLowerCase());
-
+    
   });
-
-  const completeTodos = ({id,completed})=>{
+  
+  
+  const completeTodo = ({id,completed})=>{
     const updatedTodos = todos.map(todo => 
-        todo.id === id ? {...todo, completed: !completed} : todo
+      todo.id === id ? {...todo, completed: !completed} : todo
       );
-     
-      setTodos(updatedTodos);
 
+    setTodos(updatedTodos);
+    const isAllCompleted = updatedTodos.every(todo=>todo.completed);
+    isAllCompleted ? launchFireworks() : setActiveFire(false);
   };
-
-  const onRemoved = (id)=>{
+    
+  const removeTodo = (id)=>{
     const removedComponents = todos.filter(todo => todo.id !== id && todo);
 
     setTodos(removedComponents);
   };
-
+  
+  //fireworks
+  useEffect(()=>{
+    activeFire ?
+      idTimeout = setTimeout(()=>{
+        setActiveFire(false);
+      },5000) :
+      clearTimeout(idTimeout);
+    
+  },[activeFire]);
+  
+  const launchFireworks =()=>{
+    setActiveFire(true);
+  }
 
   return (
       <>
+        <Fireworks activeFire={activeFire}/>
         <TodoCounter completed={completedTodos} total={totalTodos}/>
 
         <TodoSearch 
@@ -65,13 +80,11 @@ function App() {
                 key={todo.id} 
                 name={todo.name}
                 completed={todo.completed}
-                onCompleted={()=>completeTodos({id: todo.id, completed: todo.completed})} 
-                onRemoved={()=>onRemoved(todo.id)} 
+                onCompleted={()=>completeTodo({id: todo.id, completed: todo.completed})} 
+                onRemoved={()=>removeTodo(todo.id)} 
               
               />
-                
-            
-              )
+            )
           }
           
           
