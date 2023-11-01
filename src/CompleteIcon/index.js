@@ -1,4 +1,4 @@
-import { TodoIcon } from './TodoIcon.js';
+import { TodoIcon } from '../TodoIcon';
 
 function CompleteIcon({completed , onCompleted}){
   return(

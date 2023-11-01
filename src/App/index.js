@@ -1,10 +1,10 @@
-import { TodoCounter } from './TodoCounter';
-import { TodoSearch } from './TodoSearch';
-import { TodoList } from './TodoList';
-import { TodoItem } from './TodoItem';
-import {TodoCreateButton } from './TodoCreateButton';
+import { TodoCounter } from '../TodoCounter';
+import { TodoSearch } from '../TodoSearch';
+import { TodoList } from '../TodoList';
+import { TodoItem } from '../TodoItem';
+import {TodoCreateButton } from '../TodoCreateButton';
 import { useState, useEffect } from 'react';
-import Fireworks from './Fireworks.js';
+import Fireworks from '../Fireworks';
 
 
 

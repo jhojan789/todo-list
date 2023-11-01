@@ -1,6 +1,6 @@
 import './TodoIcon.css';
-import { ReactComponent as CheckSVG } from "./assets/icons/check.svg";
-import { ReactComponent as DeleteSVG } from "./assets/icons/delete.svg";
+import { ReactComponent as CheckSVG } from "./check.svg";
+import { ReactComponent as DeleteSVG } from "./delete.svg";
 
 const todoIcons = {
   "check": (color)=><CheckSVG className="Icon-svg" fill={color} />,
