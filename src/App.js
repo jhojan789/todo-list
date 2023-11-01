@@ -19,20 +19,38 @@ import Fireworks from './Fireworks.js';
 // localStorage.setItem('TODOS_V1',JSON.stringify(defaultTodos))
 
 
+function useLocalStorage(itemName , initialValue){
+
+
+  let appStorage = localStorage.getItem(itemName);
+  let parsedItem;
+  
+  if(!appStorage){
+    localStorage.setItem(itemName,JSON.stringify(initialValue));
+    parsedItem = initialValue;
+  }else{
+    parsedItem = JSON.parse(appStorage);
+  }
+
+  const [item, setItem] = useState(parsedItem);
+
+
+  const saveItem = (newItem)=>{
+    const stringifyItem = JSON.stringify(newItem);
+    localStorage.setItem(itemName, stringifyItem);
+    setItem(newItem);
+  };
+
+  return [item , saveItem];
+
+}
+
 let idTimeout;
 
 function App() {
-  let appStorage = localStorage.getItem('TODOS_V1');; 
-  let parsedTodos;
-
-  if(!appStorage){
-    localStorage.setItem('TODOS_V1','[]');
-  }else{
-    parsedTodos = JSON.parse(appStorage);
-  }
 
   const [searchValue, setSearchValue] = useState('');
-  const [todos, setTodos] = useState(parsedTodos);
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   const [activeFire, setActiveFire] = useState(false);
   //derived states
   const completedTodos = todos.filter(todo=>!!todo.completed).length;
@@ -52,13 +70,12 @@ function App() {
     
     const isAllCompleted = updatedTodos.every(todo=>todo.completed);
     isAllCompleted ? launchFireworks() : setActiveFire(false);
-
-    saveLocalStorage(updatedTodos);
+    saveTodos(updatedTodos);
   };
     
   const removeTodo = (id)=>{
     const removedComponents = todos.filter(todo => todo.id !== id && todo);
-    saveLocalStorage(removedComponents);
+    saveTodos(removedComponents);
   };
   
   //fireworks
@@ -75,11 +92,7 @@ function App() {
     setActiveFire(true);
   }
 
-  const saveLocalStorage = (todos)=>{
-    const stringifyTodos = JSON.stringify(todos);
-    localStorage.setItem('TODOS_V1', stringifyTodos);
-    setTodos(todos);
-  }
+
 
   return (
       <>
