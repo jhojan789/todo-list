@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 
 
 
+// localStorage.removeItem('TODOS_V1')
 
 // const defaultTodos = [
 //   {name:'Tomar el Curso de Introducción a Node.js  ',completed:false, id: 1},
@@ -20,23 +21,31 @@ function useLocalStorage(itemName , initialValue){
 
   const [item, setItem] = useState(initialValue);
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   
   useEffect(()=>{
-    let appStorage = localStorage.getItem(itemName);
-    let parsedItem;
-    if(!appStorage){
-      localStorage.setItem(itemName,JSON.stringify(initialValue));
-      parsedItem = initialValue;
-    }else{
-      parsedItem = JSON.parse(appStorage);
-    }
-
-  });
-
-
-
+      try{
+        let appStorage = localStorage.getItem(itemName);
+        let parsedItem;
+        if(!appStorage){
+          localStorage.setItem(itemName,JSON.stringify(initialValue));
+          parsedItem = initialValue;
+        }else{
+          parsedItem = JSON.parse(appStorage);
+          
+        }
+        setTimeout(()=>{
+          setItem(parsedItem);
+          setLoading(false);
+          
+        },2000);
+      }catch(error)
+        {
+          setLoading(false);
+          setError(true);
+        }
+      },[]);
 
   const saveItem = (newItem)=>{
     const stringifyItem = JSON.stringify(newItem);
