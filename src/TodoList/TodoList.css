@@ -2,3 +2,8 @@
   list-style: none;
   
 }
+
+.TodoList .message{
+  text-align: center;
+  font-size: 2.4rem;
+}
