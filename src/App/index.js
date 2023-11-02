@@ -18,17 +18,24 @@ import { useState, useEffect } from 'react';
 function useLocalStorage(itemName , initialValue){
 
 
-  let appStorage = localStorage.getItem(itemName);
-  let parsedItem;
-  
-  if(!appStorage){
-    localStorage.setItem(itemName,JSON.stringify(initialValue));
-    parsedItem = initialValue;
-  }else{
-    parsedItem = JSON.parse(appStorage);
-  }
+  const [item, setItem] = useState(initialValue);
 
-  const [item, setItem] = useState(parsedItem);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  
+  useEffect(()=>{
+    let appStorage = localStorage.getItem(itemName);
+    let parsedItem;
+    if(!appStorage){
+      localStorage.setItem(itemName,JSON.stringify(initialValue));
+      parsedItem = initialValue;
+    }else{
+      parsedItem = JSON.parse(appStorage);
+    }
+
+  });
+
+
 
 
   const saveItem = (newItem)=>{
@@ -37,7 +44,12 @@ function useLocalStorage(itemName , initialValue){
     setItem(newItem);
   };
 
-  return [item , saveItem];
+  return { 
+    item, 
+    saveItem,
+    loading,
+    error
+  };
 
 }
 
@@ -46,7 +58,7 @@ let idTimeout;
 function App() {
 
   const [searchValue, setSearchValue] = useState('');
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  const {item:todos, saveItem:saveTodos,loading, error} = useLocalStorage('TODOS_V1', []);
   const [activeFire, setActiveFire] = useState(false);
   //derived states
   const completedTodos = todos.filter(todo=>!!todo.completed).length;
@@ -98,7 +110,9 @@ function App() {
       setSearchValue={setSearchValue}
       searchedTodos={searchedTodos}
       completeTodo={completeTodo}
-      removeTodo={removeTodo}
+      removeTodo={removeTodo} 
+      loading={loading} 
+      error={error}
     />
     
   );
