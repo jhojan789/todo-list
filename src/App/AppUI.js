@@ -3,6 +3,9 @@ import { TodoSearch } from '../TodoSearch';
 import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import {TodoCreateButton } from '../TodoCreateButton';
+import { TodosLoading } from '../TodosLoading';
+import { TodosError } from '../TodosError';
+import { TodosEmpty } from '../TodosEmpty';
 import Fireworks from '../Fireworks';
 
 
@@ -26,10 +29,15 @@ function AppUI({
         setSearchValue={setSearchValue}  
       />
       <TodoList>
-        {loading && <p className="message message-loading">Loading...</p>}
-        {error && <p className='message message-error'>Error 404</p>}
+        {loading && 
+          <>
+            <TodosLoading/>
+            <TodosLoading/>
+            <TodosLoading/>
+          </>}
+        {error && <TodosError/>}
         {(!error && !loading && searchedTodos.length === 0) && 
-          <p className='message message-create'>Create your first TO DO</p>  }
+          <TodosEmpty /> }
         {
           searchedTodos.map(todo=>
             <TodoItem 

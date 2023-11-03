@@ -1,0 +1,15 @@
+.TodoList .message{
+  text-align: center;
+  font-size: 2.4rem;
+}
+
+.loading-li{
+  position: relative;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  background: #323131;
+
+  margin: 0 7vw 4vh;
+  padding: 20px 20px 20px 0px;
+  min-height: 100px;
+}
