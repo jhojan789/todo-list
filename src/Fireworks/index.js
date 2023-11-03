@@ -1,12 +1,12 @@
 // src/components/Confetti.js
-import React from 'react';
 import Confetti from 'react-confetti';
+import {TodoContext} from '../TodoContext';
+import {useContext} from 'react';
 
 
 
-
-const Fireworks = ({activeFire})=>{
-  
+const Fireworks = ()=>{
+  const { activeFire } = useContext(TodoContext);
   return (
     <div>
       { activeFire &&
