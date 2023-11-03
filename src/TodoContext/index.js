@@ -33,6 +33,7 @@ function TodoProvider({children}){
   };
     
   const removeTodo = (id)=>{
+    activeFire && setActiveFire(false);
     const removedComponents = todos.filter(todo => todo.id !== id && todo);
     saveTodos(removedComponents);
   };
