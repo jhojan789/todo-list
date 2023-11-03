@@ -9,6 +9,8 @@ import { TodosEmpty } from '../TodosEmpty';
 import Fireworks from '../Fireworks';
 import { TodoContext } from '../TodoContext';
 import { useContext } from 'react';
+import { Modal } from '../Modal';
+
 
 
 function AppUI(){
@@ -18,6 +20,8 @@ function AppUI(){
     removeTodo,
     loading,
     error,
+    openPortal,
+    setOpenPortal,
 
   } = useContext(TodoContext);
 
@@ -54,6 +58,11 @@ function AppUI(){
       
 
       <TodoCreateButton/>
+        {openPortal && (
+          <Modal>
+            Here is where add TO DO will execute
+          </Modal>
+        )}
 
     </>
   )

@@ -10,6 +10,7 @@ function TodoProvider({children}){
   const [searchValue, setSearchValue] = useState('');
   const {item:todos, saveItem:saveTodos,loading, error} = useLocalStorage('TODOS_V1', []);
   const [activeFire, setActiveFire] = useState(false);
+  const [openPortal, setOpenPortal] = useState(true);
   
   //derived states
   const completedTodos = todos.filter(todo=>!!todo.completed).length;
@@ -60,6 +61,8 @@ function TodoProvider({children}){
         removeTodo,
         loading,
         error,
+        openPortal, 
+        setOpenPortal,
       }}>
       {children}
     </TodoContext.Provider>
