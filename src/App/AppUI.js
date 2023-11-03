@@ -21,7 +21,7 @@ function AppUI(){
     loading,
     error,
     openPortal,
-    setOpenPortal,
+    
 
   } = useContext(TodoContext);
 
