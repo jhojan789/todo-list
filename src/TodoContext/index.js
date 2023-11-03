@@ -3,9 +3,10 @@ import { useLocalStorage } from "./useLocalStorage";
 import { useState, useEffect } from "react";
 
 const TodoContext = createContext();
-let idTimeout;
+
 
 function TodoProvider({children}){
+  const [idTimeout, setIdTimeout] = useState(0);
   const [searchValue, setSearchValue] = useState('');
   const {item:todos, saveItem:saveTodos,loading, error} = useLocalStorage('TODOS_V1', []);
   const [activeFire, setActiveFire] = useState(false);
@@ -27,7 +28,7 @@ function TodoProvider({children}){
       );
     
     const isAllCompleted = updatedTodos.every(todo=>todo.completed);
-    isAllCompleted ? launchFireworks() : setActiveFire(false);
+    isAllCompleted ? setActiveFire(true) : setActiveFire(false);
     saveTodos(updatedTodos);
   };
     
@@ -39,16 +40,14 @@ function TodoProvider({children}){
   //fireworks
   useEffect(()=>{
     activeFire ?
-      idTimeout = setTimeout(()=>{
+      setIdTimeout(setTimeout(()=>{
         setActiveFire(false);
-      },10000) :
+      },10000)) :
       clearTimeout(idTimeout);
     
   },[activeFire]);
   
-  const launchFireworks =()=>{
-    setActiveFire(true);
-  }
+
   return (
     <TodoContext.Provider value={{      
         activeFire,
