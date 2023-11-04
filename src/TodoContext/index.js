@@ -39,6 +39,17 @@ function TodoProvider({children}){
     saveTodos(removedComponents);
   };
   
+  const addNewTodo = (text)=>{
+    const newTodo = {
+      id: totalTodos + 1,
+      name: text,
+      completed: false,
+    }
+    todos.push(newTodo);
+    saveTodos(todos);
+
+  }
+
   //fireworks
   useEffect(()=>{
     activeFire ?
@@ -59,6 +70,7 @@ function TodoProvider({children}){
         searchedTodos,
         completeTodo,
         removeTodo,
+        addNewTodo,
         loading,
         error,
         openPortal, 
