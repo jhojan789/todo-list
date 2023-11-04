@@ -7,17 +7,14 @@ import { TodoContext } from '../TodoContext';
 function TodoCreateButton(){
   const {setOpenPortal} = useContext(TodoContext);
 
+  const showPortal = (event)=>{
+    event.preventDefault();
+    setOpenPortal(state=>!state);
+  }
+
   return (
     <button className="TodoCreateButton" 
-      onClick={(event)=>{
-
-        console.log(setOpenPortal(state=>!state));
-        console.log(event.target.tagName)
-        console.log(event.target)
-        
-      }}
-      
-      
+      onClick={showPortal}
     ></button>
 
   );
