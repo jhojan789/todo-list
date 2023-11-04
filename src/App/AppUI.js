@@ -10,6 +10,8 @@ import Fireworks from '../Fireworks';
 import { TodoContext } from '../TodoContext';
 import { useContext } from 'react';
 import { Modal } from '../Modal';
+import { TodoForm } from '../TodoForm';
+
 
 
 
@@ -60,7 +62,7 @@ function AppUI(){
       <TodoCreateButton/>
         {openPortal && (
           <Modal>
-            Here is where add TO DO will execute
+            <TodoForm/>
           </Modal>
         )}
 

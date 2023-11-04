@@ -1,0 +1,96 @@
+.TodoForm {
+  background-color: #FAFAFA;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+
+.TodoForm h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.4rem;
+  color: #1E1E1F;
+  padding: 20px 0;
+}
+
+
+.TodoForm textarea {
+  display: flex;
+  align-items: center;
+  border: 2px solid #1E1E1F;
+  min-height: 112px;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+  text-align: center;
+  resize: none;
+  padding: 20px;
+  box-shadow: 0px 5px 50px 0px rgba(32, 35, 41, 0.25);
+
+}
+
+.TodoForm textarea::placeholder {
+  font-family: Montserrat;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 2.4rem;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.TodoForm textarea:focus {
+  outline: 4px solid #61dafa;
+  border: none;
+}
+
+.TodoForm h2,
+.TodoForm textarea,
+.TodoForm-btnContainer{
+
+  width: 85%;
+}
+
+.TodoForm-btnContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.TodoForm-button {
+  width: 40%;
+  padding: 10px;
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 2.2rem;
+  text-align: center;
+  border: 2px;
+
+}
+.TodoForm-button--add {
+  background: #61DAFA;
+  border: none;
+  box-shadow: 0px 5px 25px 0px rgba(97, 218, 250, 0.5);
+}
+
+.TodoForm-button--add:hover {
+  background: #45a3bc;
+  cursor: pointer;
+
+}
+
+
+
+.TodoForm-button--cancel {
+  background: none;
+  border: none;
+
+}
+.TodoForm-button--cancel:hover {
+  background: rgb(171, 167, 167);
+  cursor: pointer;
+
+
+}
+
+
+
