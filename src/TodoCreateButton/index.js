@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import './TodoCreateButton.css';
 import { TodoContext } from '../TodoContext';
-
+import { ReactComponent as CreateSVG} from './create.svg';
 
 
 function TodoCreateButton(){
@@ -13,9 +13,9 @@ function TodoCreateButton(){
   }
 
   return (
-    <button className="TodoCreateButton" 
+    <span className="TodoCreateButton" 
       onClick={showPortal}
-    ></button>
+    > <CreateSVG/></span>
 
   );
 }

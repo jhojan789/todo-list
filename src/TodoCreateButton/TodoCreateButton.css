@@ -1,4 +1,4 @@
-.TodoCreateButton{
+/* .TodoCreateButton{
   position: fixed;
   right: 54px;
   bottom: 12px;
@@ -19,5 +19,25 @@
 .TodoCreateButton:hover{
   cursor: pointer;
   transform: rotate(226deg);
+
+} */
+
+.TodoCreateButton{
+  position: fixed;
+  display: block;
+  width: 64px;
+  height: 64px; 
+  right: 25px;
+  bottom: 29px;
+  transition: transform 0.5s ease;
+  z-index: 1;
+  fill: #61dafa;
+  
+}     
+
+.TodoCreateButton:hover{
+  cursor: pointer;
+  transform: rotate(226deg);
+
 
 }
