@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { TodoContext } from "../TodoContext";
-
+import './TodosEmpty.css';
 
 function TodosEmpty(){
   const {searchedTodos,totalTodos} = useContext(TodoContext);

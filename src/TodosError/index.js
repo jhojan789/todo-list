@@ -1,3 +1,4 @@
+import './TodosError.css';
 
 function TodosError(){
   return(
